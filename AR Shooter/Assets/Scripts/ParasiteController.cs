@@ -25,7 +25,11 @@ public class ParasiteController : MonoBehaviour
     void Update()
     {
         if (health <= 0)
+        {
             GetComponent<BoxCollider>().enabled = false;
+            ParasiteSpawner.RemoveParasiteFromList(gameObject);
+            Destroy(gameObject, 2f);
+        }
         animator.SetInteger("Health", health);
         LookAtPlayer();
         if (spitLauncher.launchSpit && !launchedGoo)
