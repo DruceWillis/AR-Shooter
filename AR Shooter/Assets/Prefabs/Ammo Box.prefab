@@ -1039,6 +1039,7 @@ GameObject:
   - component: {fileID: 5229565367494613390}
   - component: {fileID: 4758628722894591380}
   - component: {fileID: 4203285155983343598}
+  - component: {fileID: -7884809657526597990}
   m_Layer: 0
   m_Name: Ammo Box
   m_TagString: Untagged
@@ -1106,7 +1107,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1120,6 +1121,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab0eddb591ee59941a5b3f6257bf3326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7884809657526597990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8384833033623030034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92187cacb363ed94f94eb965d7600d7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8677790791504740953

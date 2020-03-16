@@ -12,7 +12,7 @@ public class AmmunitionAndAidKitSpawner : MonoBehaviour
     List<Vector3> randomPositions = new List<Vector3>();
 
     int count = 0;
-    private float R = 20;
+    private float R = Circle.radius;
     private float r;
     private float theta;
     private float x;
@@ -41,7 +41,7 @@ public class AmmunitionAndAidKitSpawner : MonoBehaviour
         x = r * Mathf.Cos(theta);
         z = r * Mathf.Sin(theta);
 
-        newPos = new Vector3(x, 0.5f, z);
+        newPos = new Vector3(x, 0.25f, z);
         return newPos;
     }
 
@@ -56,7 +56,7 @@ public class AmmunitionAndAidKitSpawner : MonoBehaviour
             Destroy (firstAidKitInstance, 15f);
         }
     }
-    
+
     IEnumerator SpawnAmmoBox()
     {
         while (true)
