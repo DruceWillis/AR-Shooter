@@ -8,7 +8,7 @@ public class Circle : MonoBehaviour
     [Range(0, 50)]
     public int segments = 50;
     [Range(0, 50)]
-    public float radius = 50;
+    public static float radius = 50;
     LineRenderer line;
 
     [SerializeField] GameObject zoneCollider;

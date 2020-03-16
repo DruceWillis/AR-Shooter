@@ -10,6 +10,8 @@ public class ParasiteController : MonoBehaviour
     private bool launchedGoo = false;
     private GameObject player;
     private Animator animator;
+    private bool dead = false;
+    
     public int health = 50;
 
 
@@ -24,10 +26,13 @@ public class ParasiteController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0)
+        if (health <= 0 && !dead)
         {
             GetComponent<BoxCollider>().enabled = false;
+            dead = true;
             ParasiteSpawner.RemoveParasiteFromList(gameObject);
+            Score.AddPointsToScore();
+
             Destroy(gameObject, 2f);
         }
         animator.SetInteger("Health", health);

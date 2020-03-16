@@ -37,4 +37,9 @@ public class AmmoController : MonoBehaviour
         currentAmmo += tempAmmo;
         additionalAmmo -= tempAmmo;
     }
+    
+    public void PickUpAmmunition()
+    {
+        additionalAmmo += 30;
+    }
 }

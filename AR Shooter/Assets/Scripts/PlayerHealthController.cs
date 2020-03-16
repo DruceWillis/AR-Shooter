@@ -18,7 +18,7 @@ public class PlayerHealthController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.GetComponent<TextMeshProUGUI>().text = "Health: " + health;
+        text.GetComponent<TextMeshProUGUI>().text = "" + health;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,4 +30,13 @@ public class PlayerHealthController : MonoBehaviour
             health -= 10;
         }
     }
+
+    public void PickUpFirstAidKit()
+    {
+        if (health + 50 >= 100)
+            health = 100;
+        else
+            health += 50;
+    }
+
 }

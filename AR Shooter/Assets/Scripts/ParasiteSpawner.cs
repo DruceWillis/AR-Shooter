@@ -14,15 +14,16 @@ public class ParasiteSpawner : MonoBehaviour
 
     Vector3 newPos;
     int count = 0;
-    float R = 20;
-    float r;
-    float theta;
-    float x;
-    float z;
+    private float R;
+    private float r;
+    private float theta;
+    private float x;
+    private float z;
 
     // Start is called before the first frame update
     void Start()
     {
+        R = Circle.radius;
         for (int i = 0; i < 3; i++)
         {
             SpawnNewParasite();
@@ -51,17 +52,17 @@ public class ParasiteSpawner : MonoBehaviour
     void SpawnNewParasite()
     {
         r = R * Mathf.Sqrt(Random.value);
-            theta = Random.value * 2 * Mathf.PI;
+        theta = Random.value * 2 * Mathf.PI;
 
-            x = r * Mathf.Cos(theta);
-            z = r * Mathf.Sin(theta);
+        x = r * Mathf.Cos(theta);
+        z = r * Mathf.Sin(theta);
 
-            newPos = new Vector3(x, -0.6f, z);
-            randomPositions.Add(newPos);
-            GameObject parasiteInstance = Instantiate(parasitePrefab, newPos, Quaternion.identity);
-            parasites.Add(parasiteInstance);
-            count++;
-            parasiteInstance.name = "Parasite " + count;
+        newPos = new Vector3(x, -0.6f, z);
+        randomPositions.Add(newPos);
+        GameObject parasiteInstance = Instantiate(parasitePrefab, newPos, Quaternion.identity);
+        parasites.Add(parasiteInstance);
+        count++;
+        parasiteInstance.name = "Parasite " + count;
     }
 
     public static void RemoveParasiteFromList(GameObject parasite)
