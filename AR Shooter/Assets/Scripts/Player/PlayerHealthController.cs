@@ -9,13 +9,6 @@ public class PlayerHealthController : MonoBehaviour
 
     [SerializeField] GameObject text;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         text.GetComponent<TextMeshProUGUI>().text = "" + health;
@@ -23,8 +16,6 @@ public class PlayerHealthController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
-        // print(other.gameObject.GetComponent<ZombieController>().attacking);
         if (other.gameObject.tag == "Goo")
         {
             health -= 10;

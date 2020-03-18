@@ -6,11 +6,11 @@ public class ParasiteController : MonoBehaviour
 {
     [SerializeField] GameObject gooPrefab;
     
-    public GameObject player {get;set;}
+    public GameObject target {get;set;}
 
     private SpitLauncher spitLauncher;
-    private bool launchedGoo = false;
     private Animator animator;
+    private bool launchedGoo = false;
     private bool dead = false;
     
     public int health = 50;
@@ -26,6 +26,17 @@ public class ParasiteController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        HandleDeath();
+
+        if (target == null)
+            return;
+
+        LookAtPlayer(target);
+        SpitAtPlayer();
+    }
+
+    private void HandleDeath()
+    {
         if (health <= 0 && !dead)
         {
             GetComponent<BoxCollider>().enabled = false;
@@ -36,19 +47,12 @@ public class ParasiteController : MonoBehaviour
             Destroy(gameObject, 2f);
         }
         animator.SetInteger("Health", health);
-
-        if (player == null)
-            return;
-
-        LookAtPlayer(player);
-        SpitAtPlayer();
     }
 
     private void SpitAtPlayer()
     {
         if (spitLauncher.launchSpit && !launchedGoo)
         {
-            // var rot = new Quaternion(spitLauncher.transform.rotation.x, spitLauncher.transform.rotation.y + 11f, spitLauncher.transform.rotation.z, spitLauncher.transform.rotation.w);
             GameObject gooInstance = Instantiate(gooPrefab, spitLauncher.transform.position, spitLauncher.transform.rotation);
             gooInstance.GetComponent<Rigidbody>().AddForce(gooInstance.transform.forward * 3f, ForceMode.Impulse);
             Destroy(gooInstance, 2f);

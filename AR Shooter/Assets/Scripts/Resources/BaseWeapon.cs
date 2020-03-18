@@ -17,8 +17,6 @@ public class BaseWeapon : MonoBehaviour
 
     private int tempAmmo;
 
-
-
     void Start()
     {
         

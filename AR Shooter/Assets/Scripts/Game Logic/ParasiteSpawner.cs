@@ -8,20 +8,15 @@ public class ParasiteSpawner : MonoBehaviour
     [SerializeField] GameObject showPlaneCP;
     [SerializeField] GameObject player;
 
-    public bool spawnedZombie = false;
-
-    List<Vector3> randomPositions = new List<Vector3>();
     private static List<GameObject> parasites = new List<GameObject>();
 
-    Vector3 newPos;
-    int count = 0;
+    private int count = 0;
     private float R;
     private float r;
     private float theta;
     private float x;
     private float z;
 
-    // Start is called before the first frame update
     void Start()
     {
         R = Circle.radius;
@@ -32,7 +27,6 @@ public class ParasiteSpawner : MonoBehaviour
         }   
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (parasites.Count < 3)
@@ -43,7 +37,7 @@ public class ParasiteSpawner : MonoBehaviour
     {
         var newPos = RandomizeLocation();
         GameObject parasiteInstance = Instantiate(parasitePrefab, newPos, Quaternion.identity);
-        parasiteInstance.GetComponent<ParasiteController>().player = player;
+        parasiteInstance.GetComponent<ParasiteController>().target = player;
         parasites.Add(parasiteInstance);
         count++;
         parasiteInstance.name = "Parasite " + count;
@@ -57,8 +51,7 @@ public class ParasiteSpawner : MonoBehaviour
         x = r * Mathf.Cos(theta);
         z = r * Mathf.Sin(theta);
 
-        newPos = new Vector3(x, -0.6f, z);
-        randomPositions.Add(newPos);
+        var newPos = new Vector3(x, -0.6f, z);
         return newPos;
     }
 

@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 9073826884413083985}
   - component: {fileID: 1978924901}
   - component: {fileID: 1978924902}
+  - component: {fileID: 4626956649329043384}
   m_Layer: 0
   m_Name: WPN_AKM
   m_TagString: Untagged
@@ -229,6 +230,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reloadSound: {fileID: 8300000, guid: c8091b94ea126bc44a4f02f51a7acdc9, type: 3}
+--- !u!114 &4626956649329043384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9073826884403700371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c02bceba9fe397418fb6405c2781995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameCamera: {fileID: 0}
+  explosion: {fileID: 8531762230819902030, guid: 4b6f6c97a8a44b247a02508f52628cd7,
+    type: 3}
+  barrel: {fileID: 9073826883416740926}
+  shellLauncher: {fileID: 200711341}
+  shotSound: {fileID: 8300000, guid: e6adc89998500ef4aab8aed95761f2d1, type: 3}
+  bullet: {fileID: 8801396051359534166, guid: a3e5aadbc8c88924499e91790db5ff0a, type: 3}
+  shell: {fileID: 4402394759040859116, guid: 6496aca63cbc730479e14242a41e4dab, type: 3}
+  muzzleFlashPrefab: {fileID: 4402589962088270147, guid: 25556de9a10695d4f86f05b795e44887,
+    type: 3}
 --- !u!1 &9073826884403700373
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,10 +733,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9073826884403478195}
     m_Modifications:
+    - target: {fileID: 183326559587995117, guid: 5d4bd80044732b0498ba8148b59f0169,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5216256845960553579, guid: 5d4bd80044732b0498ba8148b59f0169,
         type: 3}
       propertyPath: m_Name
       value: Hands
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444128978474142445, guid: 5d4bd80044732b0498ba8148b59f0169,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9095164780699407992, guid: 5d4bd80044732b0498ba8148b59f0169,
         type: 3}

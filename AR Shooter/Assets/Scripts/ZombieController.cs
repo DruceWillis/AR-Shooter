@@ -67,7 +67,7 @@ public class ZombieController : MonoBehaviour
     
     void OnDestroy()
     {
-        FindObjectOfType<ParasiteSpawner>().spawnedZombie = false;
+        // FindObjectOfType<ParasiteSpawner>().spawnedZombie = false;
     }
 
     // IEnumerator ResetZombieSpawner()

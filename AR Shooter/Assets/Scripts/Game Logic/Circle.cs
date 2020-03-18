@@ -28,10 +28,10 @@ public class Circle : MonoBehaviour
         line.enabled = true;
         line.positionCount = (segments + 1);
         line.useWorldSpace = false;
-        CreatePoints ();
+        CreatePointsAndDrawCircle();
     }
 
-    void CreatePoints()
+    void CreatePointsAndDrawCircle()
     {
         float x;
         float y;

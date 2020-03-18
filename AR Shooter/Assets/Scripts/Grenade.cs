@@ -13,12 +13,7 @@ public class Grenade : MonoBehaviour
     AudioSource audioSource;
 
     Animator animator;
-    AnimationClip clip;
-    AnimationEvent animationEvent = new AnimationEvent();
 
-    bool exploded = false;
-
-    // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -27,7 +22,6 @@ public class Grenade : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -35,29 +29,12 @@ public class Grenade : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        // if (exploded)
-        //     return;
         audioSource.PlayOneShot(touchSound);
         GetComponent<Rigidbody>().mass *= 100;
-        // animationEvent.time = 1.5f;
-        // animationEvent.functionName = "Explode";
-        // clip = animator.runtimeAnimatorController.animationClips[0];
-        // clip.AddEvent(animationEvent);
-        // exploded = !exploded;
-        
-        // print(clip.length);
-        // StartCoroutine(Explode());
-    }
-
-    public void PrintSmth()
-    {
-        print("bla");
     }
 
     public void Explode()
     {
-        // yield return new WaitForSeconds(1.5f);
-
         GameObject explosionInstance = Instantiate(explosion, this.transform.position, Quaternion.identity);
         AudioSource.PlayClipAtPoint(explosionSound, explosionInstance.transform.position);
         Destroy(explosionInstance, 1.5f);

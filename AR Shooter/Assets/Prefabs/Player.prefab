@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 223974228}
   - component: {fileID: 223974227}
   - component: {fileID: 4622100240749874094}
+  - component: {fileID: 223974232}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -126,3 +127,17 @@ MonoBehaviour:
   grenadePrefab: {fileID: 4607896575223716910, guid: 610bc57e98a53fa43b2409ad664c417c,
     type: 3}
   cooldown: 2
+--- !u!114 &223974232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5699328881204119765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a5f215db84037489f8fba9479ca2f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grenadesText: {fileID: 0}
+  grenades: 3

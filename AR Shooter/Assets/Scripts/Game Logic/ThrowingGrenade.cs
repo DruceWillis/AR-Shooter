@@ -9,7 +9,7 @@ public class ThrowingGrenade : MonoBehaviour
     [SerializeField] Transform grenadePos;
     [SerializeField] GameObject cooldownFiller;
 
-	public GameObject grenadePrefab;
+	[SerializeField] GameObject grenadePrefab;
     [SerializeField] float cooldown;
 
     private float cooldownTimer = 0f;
@@ -28,11 +28,15 @@ public class ThrowingGrenade : MonoBehaviour
 
     void Update()
     {
+        RechargeGrenadeIcon();
+    }
+
+    private void RechargeGrenadeIcon()
+    {
         if (cooldownTimer > 0)
         {
             cooldownTimer -= Time.deltaTime;
             cooldownFiller.GetComponent<Image>().fillAmount = cooldownTimer / cooldown;
         }
     }
-
 }
