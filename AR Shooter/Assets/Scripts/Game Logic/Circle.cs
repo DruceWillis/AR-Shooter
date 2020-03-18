@@ -8,12 +8,19 @@ public class Circle : MonoBehaviour
     [Range(0, 50)]
     public int segments = 50;
     [Range(0, 50)]
-    public static float radius = 5;
+    public float radiusOfCircle = 15;
+
+    public static float radius;
     LineRenderer line;
 
     [SerializeField] GameObject zoneCollider;
 
-    void Start ()
+    private void Awake()
+    {
+        radius = radiusOfCircle;
+    }
+
+    void Start()
     {
         line = gameObject.GetComponent<LineRenderer>();
         zoneCollider.GetComponent<SphereCollider>().radius = radius;
@@ -24,11 +31,10 @@ public class Circle : MonoBehaviour
         CreatePoints ();
     }
 
-    void CreatePoints ()
+    void CreatePoints()
     {
         float x;
         float y;
-        float z;
 
         float angle = 20f;
 

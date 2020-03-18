@@ -24,13 +24,11 @@ public class ParasiteSpawner : MonoBehaviour
     void Start()
     {
         R = Circle.radius;
+        
         for (int i = 0; i < 3; i++)
         {
             SpawnNewParasite();
-        }
-        // print(newPos);
-        // print(Vector3.Distance(new Vector3(0, -0.6f, 0), newPos));
-        
+        }   
     }
 
     // Update is called once per frame
@@ -38,18 +36,18 @@ public class ParasiteSpawner : MonoBehaviour
     {
         if (parasites.Count < 3)
             SpawnNewParasite();
-        // float distance = showPlaneCP.GetComponent<ShowPlaneCP>().distanceBetweenPlaneCenterAndPlayer;
-        // if (distance > 2f && !spawnedZombie)
-        // {
-        //     GameObject parasiteInstance = Instantiate(parasitePrefab, showPlaneCP.GetComponent<ShowPlaneCP>().planeCenter, Quaternion.identity);
-        //     count++;
-        //     parasiteInstance.name = "Parasite " + count;
-        //     spawnedZombie = true;
-        // }
-
     }
 
     void SpawnNewParasite()
+    {
+        var newPos = RandomizeLocation();
+        GameObject parasiteInstance = Instantiate(parasitePrefab, newPos, Quaternion.identity);
+        parasites.Add(parasiteInstance);
+        count++;
+        parasiteInstance.name = "Parasite " + count;
+    }
+
+    private Vector3 RandomizeLocation()
     {
         r = R * Mathf.Sqrt(Random.value);
         theta = Random.value * 2 * Mathf.PI;
@@ -59,10 +57,7 @@ public class ParasiteSpawner : MonoBehaviour
 
         newPos = new Vector3(x, -0.6f, z);
         randomPositions.Add(newPos);
-        GameObject parasiteInstance = Instantiate(parasitePrefab, newPos, Quaternion.identity);
-        parasites.Add(parasiteInstance);
-        count++;
-        parasiteInstance.name = "Parasite " + count;
+        return newPos;
     }
 
     public static void RemoveParasiteFromList(GameObject parasite)

@@ -11,7 +11,7 @@ public class AmmoController : MonoBehaviour
     public int currentAmmo = 30;
     public int additionalAmmo = 60;
     
-    private const int MAX_AMMO = 30;
+    private const int MAX_CURRENT_AMMO = 30;
     private int tempAmmo;
 
     void Start()
@@ -32,7 +32,7 @@ public class AmmoController : MonoBehaviour
         this.GetComponent<Animator>().SetTrigger("Reload");
         AudioSource.PlayClipAtPoint(this.GetComponent<Reload>().reloadSound, this.transform.position);
 
-        tempAmmo = MAX_AMMO - currentAmmo;
+        tempAmmo = MAX_CURRENT_AMMO - currentAmmo;
         tempAmmo = additionalAmmo >= tempAmmo ? tempAmmo : additionalAmmo;
         currentAmmo += tempAmmo;
         additionalAmmo -= tempAmmo;
@@ -40,6 +40,9 @@ public class AmmoController : MonoBehaviour
     
     public void PickUpAmmunition()
     {
-        additionalAmmo += 30;
+        if (additionalAmmo <= 60)
+            additionalAmmo += 30;
+        else
+            additionalAmmo = 90;
     }
 }

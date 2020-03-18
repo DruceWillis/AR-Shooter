@@ -7,12 +7,12 @@ public class AmmunitionAndAidKitSpawner : MonoBehaviour
 
     [SerializeField] GameObject firstAidKit;
     [SerializeField] GameObject ammoBox;
-    // [SerializeField] GameObject grenade;
+    [SerializeField] GameObject grenadePack;
 
     List<Vector3> randomPositions = new List<Vector3>();
 
     int count = 0;
-    private float R = Circle.radius;
+    private float R;
     private float r;
     private float theta;
     private float x;
@@ -21,8 +21,10 @@ public class AmmunitionAndAidKitSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        R = Circle.radius;
         StartCoroutine("SpawnFirstAidKit");
         StartCoroutine("SpawnAmmoBox");
+        StartCoroutine("SpawnGrenadePack");
     }
 
     // Update is called once per frame
@@ -69,12 +71,15 @@ public class AmmunitionAndAidKitSpawner : MonoBehaviour
 
     }
 
-    // IEnumerator SpawnGrenade()
-    // {
-    //     yield return new WaitForSeconds(5f);
+    IEnumerator SpawnGrenadePack()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(3f);
 
-    //     GameObject grenadeInstance = Instantiate(grenade, RandomizeLocation(), Quaternion.identity);
-        
-    // }
+            GameObject grenadeInstance = Instantiate(grenadePack, RandomizeLocation(), Quaternion.identity);
+            Destroy (grenadeInstance, 15f);
+        }
+    }
 
 }
