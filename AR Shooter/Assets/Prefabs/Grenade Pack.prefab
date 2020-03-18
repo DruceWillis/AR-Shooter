@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5974240888732097875}
   - component: {fileID: -6099417018430078569}
   - component: {fileID: -9084548146051640100}
+  - component: {fileID: 5804921348942281321}
   m_Layer: 0
   m_Name: Grenade Pack
   m_TagString: Untagged
@@ -78,6 +79,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+--- !u!114 &5804921348942281321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8237825022198295747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282a4eb1908ac054e9a916f0ed251843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &559261387131967696
 PrefabInstance:
   m_ObjectHideFlags: 0

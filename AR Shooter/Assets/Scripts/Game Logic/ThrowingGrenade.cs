@@ -16,11 +16,12 @@ public class ThrowingGrenade : MonoBehaviour
 
     public void ThrowGrenade()
     {
-        if (cooldownTimer > 0)
+        if (cooldownTimer > 0 || this.GetComponent<GrenadeController>().grenades < 1)
             return;
         
         GameObject grenadeInstance = Instantiate(grenadePrefab, grenadePos.position, grenadePos.rotation);
         grenadeInstance.GetComponent<Rigidbody>().AddForce(grenadePos.forward * 5f, ForceMode.Impulse);
+        this.GetComponent<GrenadeController>().grenades--;
 
         cooldownTimer = cooldown;
     }

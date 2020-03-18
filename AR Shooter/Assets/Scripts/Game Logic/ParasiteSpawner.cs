@@ -6,6 +6,7 @@ public class ParasiteSpawner : MonoBehaviour
 {
     [SerializeField] GameObject parasitePrefab;
     [SerializeField] GameObject showPlaneCP;
+    [SerializeField] GameObject player;
 
     public bool spawnedZombie = false;
 
@@ -42,6 +43,7 @@ public class ParasiteSpawner : MonoBehaviour
     {
         var newPos = RandomizeLocation();
         GameObject parasiteInstance = Instantiate(parasitePrefab, newPos, Quaternion.identity);
+        parasiteInstance.GetComponent<ParasiteController>().player = player;
         parasites.Add(parasiteInstance);
         count++;
         parasiteInstance.name = "Parasite " + count;

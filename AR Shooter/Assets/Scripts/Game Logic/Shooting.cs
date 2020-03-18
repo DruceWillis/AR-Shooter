@@ -7,17 +7,16 @@ using UnityEngine.EventSystems;
 public class Shooting : MonoBehaviour
 {
     
-	public GameObject gameCamera;
-	public GameObject explosion;
+	[SerializeField] GameObject gameCamera;
+	[SerializeField] GameObject explosion;
 
-    public GameObject AKM;
-	public GameObject barrel;
-	public GameObject shellLauncher;
+	[SerializeField] GameObject barrel;
+	[SerializeField] GameObject shellLauncher;
 
-    public AudioClip shotSound;
-    public GameObject bullet;
-    public GameObject shell;
-    public GameObject muzzleFlashPrefab;
+    [SerializeField] AudioClip shotSound;
+    [SerializeField] GameObject bullet;
+    [SerializeField] GameObject shell;
+    [SerializeField] GameObject muzzleFlashPrefab;
 
     public void Shoot()
     {
@@ -27,7 +26,7 @@ public class Shooting : MonoBehaviour
         {
             
                 //Destroy(hit.transform.gameObject);
-                var ammoController = AKM.GetComponent<AmmoController>();
+                var ammoController = this.GetComponent<BaseWeapon>();
 
                 if (ammoController.currentAmmo == 0 && ammoController.additionalAmmo > 0)
                 {
@@ -37,11 +36,11 @@ public class Shooting : MonoBehaviour
                 else if (ammoController.currentAmmo == 0 && ammoController.additionalAmmo == 0)
                     return;
                 
-                if(AKM.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Reload"))
+                if(this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Reload"))
                     return;
 
                 ammoController.currentAmmo -= 1;
-                AKM.GetComponent<Animator>().SetTrigger("ShotFired");
+                this.GetComponent<Animator>().SetTrigger("ShotFired");
 
                 GameObject go = Instantiate(explosion, hit.point, Quaternion.LookRotation(hit.normal));
 

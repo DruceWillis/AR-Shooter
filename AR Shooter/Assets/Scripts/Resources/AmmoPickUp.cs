@@ -6,10 +6,10 @@ public class AmmoPickUp : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.parent && other.transform.parent.GetComponentInChildren<AmmoController>() &&
-                other.transform.parent.GetComponentInChildren<AmmoController>().additionalAmmo < 90)
+        if (other.transform.parent && other.transform.parent.GetComponentInChildren<BaseWeapon>() &&
+                other.transform.parent.GetComponentInChildren<BaseWeapon>().additionalAmmo < 90)
         {
-            other.transform.parent.GetComponentInChildren<AmmoController>().PickUpAmmunition();
+            other.transform.parent.GetComponentInChildren<BaseWeapon>().PickUpAmmunition();
             Destroy(gameObject);    
         }
     }

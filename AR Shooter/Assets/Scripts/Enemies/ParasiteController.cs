@@ -6,9 +6,10 @@ public class ParasiteController : MonoBehaviour
 {
     [SerializeField] GameObject gooPrefab;
     
+    public GameObject player {get;set;}
+
     private SpitLauncher spitLauncher;
     private bool launchedGoo = false;
-    private GameObject player;
     private Animator animator;
     private bool dead = false;
     
@@ -20,7 +21,6 @@ public class ParasiteController : MonoBehaviour
     {
         spitLauncher = GetComponentInChildren<SpitLauncher>();
         animator = GetComponent<Animator>();
-        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -36,7 +36,16 @@ public class ParasiteController : MonoBehaviour
             Destroy(gameObject, 2f);
         }
         animator.SetInteger("Health", health);
-        LookAtPlayer();
+
+        if (player == null)
+            return;
+
+        LookAtPlayer(player);
+        SpitAtPlayer();
+    }
+
+    private void SpitAtPlayer()
+    {
         if (spitLauncher.launchSpit && !launchedGoo)
         {
             // var rot = new Quaternion(spitLauncher.transform.rotation.x, spitLauncher.transform.rotation.y + 11f, spitLauncher.transform.rotation.z, spitLauncher.transform.rotation.w);
@@ -50,7 +59,7 @@ public class ParasiteController : MonoBehaviour
             launchedGoo = !spitLauncher.finishedSpit;
     }
 
-    private void LookAtPlayer()
+    private void LookAtPlayer(GameObject player)
     {
         Vector3 targetPosition = player.transform.position;
         targetPosition.y = transform.position.y;

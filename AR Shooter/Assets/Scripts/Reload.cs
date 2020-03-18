@@ -8,13 +8,13 @@ public class Reload : MonoBehaviour
 
     public void ReloadGun()
     {
-        var currAmmo = this.GetComponent<AmmoController>().currentAmmo;
-        var addAmmo = this.GetComponent<AmmoController>().additionalAmmo;
+        var currAmmo = this.GetComponent<BaseWeapon>().currentAmmo;
+        var addAmmo = this.GetComponent<BaseWeapon>().additionalAmmo;
 
         if ((currAmmo == 0 && addAmmo == 0) || currAmmo == 30 || addAmmo == 0)
             return;
         this.GetComponent<Animator>().SetTrigger("Reload");
-        this.GetComponent<AmmoController>().HandleReload();
+        this.GetComponent<BaseWeapon>().HandleReload();
         AudioSource.PlayClipAtPoint(reloadSound, this.transform.position);
     }
 
