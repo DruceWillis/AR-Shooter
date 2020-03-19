@@ -63,6 +63,7 @@ public class Shooting : MonoBehaviour
                 {
                     hit.transform.GetComponent<ParasiteController>().health -= 10;
                     hit.transform.GetComponent<ParasiteController>().PlayFallBackAnimation();
+                    hit.transform.GetComponent<ParasiteController>().fireEffect.SetActive(true);
                     Destroy(bulletInstance);
                 }
                 else

@@ -6,6 +6,7 @@ public class ParasiteController : MonoBehaviour
 {
     [SerializeField] GameObject gooPrefab;
     
+    public GameObject fireEffect;
     public GameObject target {get;set;}
 
     private SpitLauncher spitLauncher;
