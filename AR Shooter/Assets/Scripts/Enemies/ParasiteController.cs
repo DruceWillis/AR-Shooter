@@ -13,6 +13,7 @@ public class ParasiteController : MonoBehaviour
     private Animator animator;
     private bool launchedGoo = false;
     private bool dead = false;
+    private Rigidbody rigidbody;
     
     public int health = 50;
 
@@ -22,11 +23,13 @@ public class ParasiteController : MonoBehaviour
     {
         spitLauncher = GetComponentInChildren<SpitLauncher>();
         animator = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        rigidbody.velocity = Vector3.zero;
         HandleDeath();
 
         if (target == null)
@@ -74,5 +77,20 @@ public class ParasiteController : MonoBehaviour
     public void PlayFallBackAnimation()
     {
         animator.SetTrigger("GotHit");
+    }
+
+    public void SetOnFire()
+    {
+        fireEffect.SetActive(true);
+    }
+
+    public void KnockBack()
+    {
+        if (target != null)
+        {
+            Vector3 moveDirection = transform.position - target.transform.position;
+            print(moveDirection);
+            rigidbody.AddForce(moveDirection * 500f, ForceMode.Impulse);
+        }
     }
 }

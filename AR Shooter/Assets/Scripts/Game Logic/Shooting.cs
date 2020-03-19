@@ -57,19 +57,6 @@ public class Shooting : MonoBehaviour
 
                 Destroy(muzzleFlashInstance, 0.15f);
                 Destroy(shellInstance, 5f);
-
-
-                if (hit.transform.GetComponent<ParasiteController>() != null)
-                {
-                    hit.transform.GetComponent<ParasiteController>().health -= 10;
-                    hit.transform.GetComponent<ParasiteController>().PlayFallBackAnimation();
-                    hit.transform.GetComponent<ParasiteController>().fireEffect.SetActive(true);
-                    Destroy(bulletInstance);
-                }
-                else
-                {
-                    Destroy(bulletInstance, 1f);
-                }
         }
     }
 }

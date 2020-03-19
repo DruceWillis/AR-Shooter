@@ -8,9 +8,10 @@ using System;
 
 public class Bullet : MonoBehaviour
 {
-    public float force = 2f;
+    protected int damage = 10;
+    protected float force = 40f;
 
-    private Vector3 hitPos;
+    Vector3 hitPos;
 
     void Update()
     {
@@ -24,8 +25,22 @@ public class Bullet : MonoBehaviour
         hitPos = hitPosition;
     }
 
-    private void Fly()
+    void Fly()
     {
         transform.position = Vector3.MoveTowards(transform.position, hitPos, force * Time.deltaTime); 
+    }
+
+    protected virtual void OnCollisionEnter(Collision other)
+    {
+        if (other.transform.GetComponent<ParasiteController>() != null)
+        {
+            other.transform.GetComponent<ParasiteController>().health -= damage;
+            other.transform.GetComponent<ParasiteController>().PlayFallBackAnimation();
+            Destroy(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject, 1f);
+        }
     }
 }

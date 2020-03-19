@@ -1911,6 +1911,7 @@ GameObject:
   - component: {fileID: 2978622317157386459}
   - component: {fileID: 190987611300189127}
   - component: {fileID: 190987611300189126}
+  - component: {fileID: 5017980643819820111}
   m_Layer: 0
   m_Name: Parasite
   m_TagString: Untagged
@@ -1982,8 +1983,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gooPrefab: {fileID: 7918669246600872888, guid: 8206713aaebf36048b3d7f454f1af4bd,
     type: 3}
-  fireEffect: {fileID: 1000010823978654, guid: 3228a22491941734bb83ad691d17fcb9, type: 3}
+  fireEffect: {fileID: 5782579539160345712}
   health: 50
+--- !u!54 &5017980643819820111
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180625093718038450}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!1 &8273660452932409971
 GameObject:
   m_ObjectHideFlags: 0
@@ -2355,6 +2372,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3228a22491941734bb83ad691d17fcb9, type: 3}
+--- !u!1 &5782579539160345712 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000010823978654, guid: 3228a22491941734bb83ad691d17fcb9,
+    type: 3}
+  m_PrefabInstance: {fileID: 5781589433903440622}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5778787966432211438 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010409153280, guid: 3228a22491941734bb83ad691d17fcb9,
