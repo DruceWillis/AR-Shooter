@@ -6,14 +6,16 @@ public class BulletKnockBackable : Bullet
 {
     void Start()
     {
-        damage = 20;        
+        rigidbody = GetComponent<Rigidbody>();
+        if (rigidbody == null)
+            return;
+        damage = 20;
+        Fly();      
+        Destroy(gameObject, 3f);
     }
 
-    protected override void OnCollisionEnter(Collision other)
+    public void KnockBack(GameObject enemy)
     {
-        if (other.transform.GetComponent<ParasiteController>() != null)
-            other.transform.GetComponent<ParasiteController>().KnockBack();
-        base.OnCollisionEnter(other);
+        enemy.transform.Translate(Vector3.back);
     }
-
 }

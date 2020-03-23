@@ -8,6 +8,8 @@ public class ParasiteSpawner : MonoBehaviour
     [SerializeField] GameObject showPlaneCP;
     [SerializeField] GameObject player;
 
+    public int maxParasites = 3;
+
     private static List<GameObject> parasites = new List<GameObject>();
 
     private int count = 0;
@@ -21,7 +23,7 @@ public class ParasiteSpawner : MonoBehaviour
     {
         R = Circle.radius;
         
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < maxParasites; i++)
         {
             SpawnNewParasite();
         }   
@@ -29,7 +31,7 @@ public class ParasiteSpawner : MonoBehaviour
 
     void Update()
     {
-        if (parasites.Count < 3)
+        if (parasites.Count < maxParasites)
             SpawnNewParasite();
     }
 

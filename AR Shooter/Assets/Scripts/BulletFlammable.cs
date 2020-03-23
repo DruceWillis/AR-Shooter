@@ -8,13 +8,16 @@ public class BulletFlammable : Bullet
 
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
+        if (rigidbody == null)
+            return;
         damage = 15;
+        Fly();
+        Destroy(gameObject, 3f);
     }
 
-    protected override void OnCollisionEnter(Collision other)
+    public void SetOnFire(GameObject fireEffect)
     {
-        if (other.transform.GetComponent<ParasiteController>() != null)
-            other.transform.GetComponent<ParasiteController>().SetOnFire();
-        base.OnCollisionEnter(other);
+        fireEffect.SetActive(true);
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParasiteController : MonoBehaviour
+public class ParasiteController : MonoBehaviour, ICatchable
 {
     [SerializeField] GameObject gooPrefab;
     
@@ -79,18 +79,45 @@ public class ParasiteController : MonoBehaviour
         animator.SetTrigger("GotHit");
     }
 
-    public void SetOnFire()
+    public void Apply(Bullet bullet)
     {
-        fireEffect.SetActive(true);
+        this.health -= bullet.damage;
+        this.PlayFallBackAnimation();
+        if (bullet.GetComponent<BulletFlammable>())
+            bullet.GetComponent<BulletFlammable>().SetOnFire(this.fireEffect);
+        if (bullet.GetComponent<BulletKnockBackable>())
+            bullet.GetComponent<BulletKnockBackable>().KnockBack(this.gameObject);
+        Destroy(bullet.gameObject);
     }
 
-    public void KnockBack()
-    {
-        if (target != null)
-        {
-            Vector3 moveDirection = transform.position - target.transform.position;
-            print(moveDirection);
-            rigidbody.AddForce(moveDirection * 500f, ForceMode.Impulse);
-        }
-    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // public void SetOnFire()
+    // {
+    //     fireEffect.SetActive(true);
+    // }
+
+    // public void KnockBack()
+    // {
+    //     if (target != null)
+    //     {
+    //         Vector3 moveDirection = transform.position - target.transform.position;
+    //         print(moveDirection);
+    //         rigidbody.AddForce(moveDirection * 500f, ForceMode.Impulse);
+    //     }
+    // }

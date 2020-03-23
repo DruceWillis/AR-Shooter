@@ -276,6 +276,7 @@ MonoBehaviour:
     type: 3}
   showPlaneCP: {fileID: 879940407}
   player: {fileID: 223974226}
+  maxParasites: 0
 --- !u!114 &216144750
 MonoBehaviour:
   m_ObjectHideFlags: 0

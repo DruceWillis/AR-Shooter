@@ -8,39 +8,30 @@ using System;
 
 public class Bullet : MonoBehaviour
 {
-    protected int damage = 10;
-    protected float force = 40f;
+    public virtual int damage {get; protected set;}
+    protected Rigidbody rigidbody {get; set;}
 
     Vector3 hitPos;
 
-    void Update()
+    void Start()
     {
-        if (hitPos == null)
+        rigidbody = GetComponent<Rigidbody>();
+        if (rigidbody == null)
             return;
+        damage = 10;
         Fly();
+        Destroy(gameObject, 3f);
     }
 
-    public void ReceiveHitPosition(Vector3 hitPosition)
+    protected void Fly()
     {
-        hitPos = hitPosition;
+        rigidbody.AddForce(Vector3.forward * 50, ForceMode.Impulse);
     }
 
-    void Fly()
+    protected void OnCollisionEnter(Collision other)
     {
-        transform.position = Vector3.MoveTowards(transform.position, hitPos, force * Time.deltaTime); 
-    }
-
-    protected virtual void OnCollisionEnter(Collision other)
-    {
-        if (other.transform.GetComponent<ParasiteController>() != null)
-        {
-            other.transform.GetComponent<ParasiteController>().health -= damage;
-            other.transform.GetComponent<ParasiteController>().PlayFallBackAnimation();
-            Destroy(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject, 1f);
-        }
+        var col = other.transform.GetComponent<ICatchable>();
+        if (col == null)    return;
+        other.transform.GetComponent<ICatchable>().Apply(this);
     }
 }
